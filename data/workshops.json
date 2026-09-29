@@ -1,0 +1,9 @@
+{
+  "workshops": [
+    { "id": "kintsugi-basics", "title": "Kintsugi: Mending with Gold", "date": "2026-10-11", "time": "4:00 – 7:00 pm", "venue": "Studio, Banjara Hills", "price": 3500, "seats": 12, "seatsLeft": 3, "level": "Beginner", "art": "kintsugi", "blurb": "Break a ceramic bowl on purpose, then mend it with gold. You take home your bowl and a starter kit.", "includes": "All materials, bowl, chai and snacks" },
+    { "id": "resin-coasters", "title": "Resin Coasters & Ocean Pours", "date": "2026-10-18", "time": "11:00 am – 2:00 pm", "venue": "Studio, Banjara Hills", "price": 2800, "seats": 10, "seatsLeft": 7, "level": "Beginner", "art": "resin", "blurb": "Learn pigment mixing, cells and lacing, then pour a set of four coasters to collect once cured.", "includes": "Resin, moulds, pigments, gloves" },
+    { "id": "calligraphy-intro", "title": "Arabic Calligraphy for Beginners", "date": "2026-10-25", "time": "10:30 am – 1:30 pm", "venue": "Studio, Banjara Hills", "price": 2200, "seats": 14, "seatsLeft": 2, "level": "Beginner", "art": "calligraphy", "blurb": "Hold a qalam, learn the Naskh alphabet and letter your own name on a small canvas.", "includes": "Qalam, ink, canvas, practice sheets" },
+    { "id": "diwali-diyas", "title": "Diwali Diya Painting for Parents & Kids", "date": "2026-11-01", "time": "4:00 – 6:00 pm", "venue": "Studio, Banjara Hills", "price": 1500, "seats": 16, "seatsLeft": 0, "level": "All ages", "art": "diya", "blurb": "Paint and gild a set of six diyas together, just in time for Diwali.", "includes": "Six diyas, paints, gold leaf" },
+    { "id": "resin-clock", "title": "Resin Geode Wall Clock", "date": "2026-11-15", "time": "11:00 am – 3:00 pm", "venue": "Studio, Banjara Hills", "price": 4200, "seats": 8, "seatsLeft": 5, "level": "Intermediate", "art": "resin", "blurb": "Design and pour a 30 cm geode-style clock with crushed glass and gold edging.", "includes": "Clock kit, resin, lunch" }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "whatsapp": "919000000000",
+  "instagram": "artyaffairs",
+  "email": "hello@artyaffairs.in",
+  "city": "Banjara Hills, Hyderabad, Telangana",
+  "banner": {
+    "active": true,
+    "theme": "diwali",
+    "text": "Diwali gifting is open. Order by 14 Oct for pan-India delivery.",
+    "link": "/shop?occasion=diwali",
+    "cta": "Shop Diwali"
+  },
+  "rates": { "INR": 1, "USD": 0.01195, "AED": 0.0439, "GBP": 0.00897 },
+  "firstOrderCode": "WELCOME10",
+  "eventOffer": { "code": "FEST15", "percent": 15, "event": "Hyderabad Makers' Market", "until": "2026-10-31" }
+}

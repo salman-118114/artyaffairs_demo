@@ -1,0 +1,118 @@
+/* Arty Affairs — design tokens (v2: minimal / premium).
+ * Primitives → semantic roles. Components use roles only. */
+:root {
+  /* Primitives */
+  --emerald-950: #0A2E25;
+  --emerald-900: #0E3B30;
+  --emerald-800: #16503F;
+  --emerald-100: #E3EAE4;
+  --paper-50: #FBF8F3;
+  --paper-100: #F6F2EA;
+  --paper-200: #EFE8DC;
+  --paper-300: #DCD3C4;
+  --gold-200: #E9D6A8;
+  --gold-300: #D9BD83;
+  --gold-500: #B08A45;   /* decorative only */
+  --gold-700: #7F5E22;   /* gold text on paper */
+  --ink-900: #1F1E1B;
+  --ink-600: #6B665D;
+  --sage-200: #C9D6CD;
+  --madder-700: #9E3A28;
+
+  /* Legacy aliases used by component CSS */
+  --ivory-50: var(--paper-50);
+  --cream-100: var(--paper-200);
+  --cream-200: var(--paper-300);
+  --cream-300: #CFC4B1;
+  --gold-400: var(--gold-300);
+  --charcoal-900: var(--ink-900);
+  --charcoal-600: var(--ink-600);
+
+  /* Semantic roles */
+  --color-bg: var(--paper-100);
+  --color-surface: var(--paper-200);
+  --color-raised: var(--paper-50);
+  --color-text: var(--ink-900);
+  --color-muted: var(--ink-600);
+  --color-border: var(--paper-300);
+  --color-border-strong: #8E826D;       /* input outlines, ≥3:1 on paper */
+  --color-accent: var(--emerald-900);
+  --color-accent-hover: var(--emerald-950);
+  --color-accent-text: var(--paper-50);
+  --color-gold: var(--gold-500);
+  --color-gold-text: var(--gold-700);
+  --color-gold-on-dark: var(--gold-300);
+  --color-dark: var(--emerald-900);
+  --color-on-dark: var(--paper-100);
+  --color-on-dark-muted: var(--sage-200);
+  --color-focus: var(--gold-700);
+  --color-danger: var(--madder-700);
+  --color-success: var(--emerald-800);
+  --color-whatsapp: #1F7A4D;
+
+  /* Type — next/font supplies metric-matched fallbacks for each family. */
+  --font-display: var(--font-marcellus), "Trajan Pro", Georgia, serif;
+  --font-accent: var(--font-cormorant), Georgia, serif;          /* italic accent words only */
+  --font-body: var(--font-hanken), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-arabic: var(--font-aref), "Amiri", "Noto Naskh Arabic", serif;
+
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: clamp(1.25rem, 1.1rem + 0.5vw, 1.5rem);
+  --text-xl: clamp(1.6rem, 1.25rem + 1.3vw, 2.4rem);
+  --text-2xl: clamp(2.1rem, 1.4rem + 2.8vw, 3.9rem);
+  --text-3xl: clamp(2.8rem, 1.5rem + 5.6vw, 7rem);
+
+  --leading-tight: 1.04;
+  --leading-snug: 1.3;
+  --leading-body: 1.7;
+  --tracking-caps: 0.22em;
+  --tracking-display: 0.005em;
+
+  /* Space (4px base) — generous */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 7rem;
+  --section: clamp(5rem, 3.5rem + 7vw, 11rem);
+  --gutter: clamp(1.25rem, 0.6rem + 3vw, 3.5rem);
+  --container: 84rem;
+  --measure: 36rem;
+
+  /* Shape — square and quiet; the arch is the one curve */
+  --radius-sm: 1px;
+  --radius-md: 2px;
+  --radius-lg: 3px;
+  --radius-pill: 2px;
+  --radius-arch: 999px 999px 0 0;
+
+  /* Elevation — almost flat */
+  --shadow-1: 0 1px 2px rgb(31 30 27 / 0.05);
+  --shadow-2: 0 12px 40px rgb(31 30 27 / 0.08);
+  --shadow-3: 0 30px 80px rgb(10 46 37 / 0.25);
+
+  --z-sticky: 20;
+  --z-header: 30;
+  --z-drawer: 50;
+  --z-toast: 60;
+
+  /* Motion — calm/luxury: longer, emphasized entrances; quick exits */
+  --dur-instant: 90ms;
+  --dur-fast: 180ms;
+  --dur-base: 320ms;
+  --dur-slow: 700ms;
+  --dur-deliberate: 1100ms;
+  --dur-seam: 1400ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+}

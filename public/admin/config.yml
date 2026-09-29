@@ -1,0 +1,134 @@
+# Arty Affairs studio admin (Decap CMS).
+# Hosting on Netlify: enable Identity + Git Gateway, invite the owner's email, then log in at /admin.
+backend:
+  name: git-gateway
+  branch: main
+
+# For local editing without login: run `npx decap-server` and set local_backend: true
+local_backend: true
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+site_url: https://artyaffairs.in
+display_url: https://artyaffairs.in
+logo_url: https://artyaffairs.in/icon.svg
+
+collections:
+  - name: catalogue
+    label: "Shop"
+    editor: { preview: false }
+    files:
+      - name: products
+        label: "Products"
+        file: "data/products.json"
+        fields:
+          - label: "Products"
+            name: "products"
+            widget: "list"
+            summary: "{{fields.name}} · ₹{{fields.price}}"
+            fields:
+              - { label: "ID (used in the link, no spaces)", name: "id", widget: "string", pattern: ['^[a-z0-9-]+$', "Lowercase letters, numbers and dashes only"] }
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Category", name: "category", widget: "select", options: [{label: "Arabic calligraphy", value: "calligraphy"}, {label: "Paintings & name canvases", value: "paintings"}, {label: "Resin art & decor", value: "resin"}, {label: "Gift hampers", value: "hampers"}, {label: "Nikah pens & sets", value: "nikah"}, {label: "Diaries, letters & cards", value: "stationery"}, {label: "Bouquets", value: "flowers"}] }
+              - { label: "Occasions", name: "occasions", widget: "select", multiple: true, options: [{label: "Wedding & Nikah", value: "wedding"}, {label: "Anniversary", value: "anniversary"}, {label: "Birthday", value: "birthday"}, {label: "Eid", value: "eid"}, {label: "Diwali", value: "diwali"}, {label: "Corporate", value: "corporate"}, {label: "Housewarming", value: "housewarming"}, {label: "New baby", value: "newborn"}] }
+              - { label: "Price (₹)", name: "price", widget: "number", value_type: "int", min: 0 }
+              - { label: "Availability", name: "availability", widget: "select", options: [{label: "Ready to ship", value: "ready"}, {label: "Made to order", value: "made"}] }
+              - { label: "Making time (days)", name: "leadDays", widget: "number", value_type: "int", default: 3 }
+              - { label: "Stock left (leave empty for made-to-order). 3 or fewer shows an 'Only X left' badge", name: "stock", widget: "number", value_type: "int", required: false }
+              - { label: "Badge", name: "badge", widget: "select", required: false, options: ["Bestseller", "Limited edition", "Original", "New"] }
+              - { label: "Show in Bestsellers on home page", name: "bestseller", widget: "boolean", default: false }
+              - { label: "Photos (first one is the main image)", name: "images", widget: "list", field: { label: "Photo", name: "image", widget: "image" }, required: false }
+              - { label: "One-line summary", name: "short", widget: "string" }
+              - { label: "Description", name: "description", widget: "text" }
+              - label: "Sizes / variants"
+                name: "sizes"
+                widget: "list"
+                fields:
+                  - { label: "Label", name: "label", widget: "string" }
+                  - { label: "Extra price (₹)", name: "add", widget: "number", value_type: "int", default: 0 }
+              - { label: "Personalisation fields", name: "personalize", widget: "select", multiple: true, required: false, options: [{label: "Name(s)", value: "name"}, {label: "Date", value: "date"}, {label: "Calligraphy wording", value: "wording"}, {label: "Letter / card message", value: "letter"}] }
+              - { label: "Rating", name: "rating", widget: "number", value_type: "float", min: 0, max: 5, step: 0.1, default: 5 }
+              - { label: "Number of reviews", name: "reviewCount", widget: "number", value_type: "int", default: 0 }
+              - label: "Placeholder artwork (used until photos are added)"
+                name: "art"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Type", name: "type", widget: "select", options: ["calligraphy", "roundel", "name", "abstract", "resin", "coasters", "pen", "hamper", "diary", "letter", "bouquet", "card"] }
+                  - { label: "Tone", name: "tone", widget: "select", options: ["emerald", "ivory", "cream", "blush", "gold"] }
+                  - { label: "Text on artwork", name: "text", widget: "string", required: false }
+
+  - name: studio
+    label: "Studio"
+    editor: { preview: false }
+    files:
+      - name: workshops
+        label: "Workshops"
+        file: "data/workshops.json"
+        fields:
+          - label: "Workshops"
+            name: "workshops"
+            widget: "list"
+            summary: "{{fields.date}} · {{fields.title}} ({{fields.seatsLeft}} left)"
+            fields:
+              - { label: "ID", name: "id", widget: "string" }
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Date", name: "date", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }
+              - { label: "Time", name: "time", widget: "string" }
+              - { label: "Venue", name: "venue", widget: "string", default: "Studio, Banjara Hills" }
+              - { label: "Price per seat (₹)", name: "price", widget: "number", value_type: "int" }
+              - { label: "Total seats", name: "seats", widget: "number", value_type: "int" }
+              - { label: "Seats left", name: "seatsLeft", widget: "number", value_type: "int" }
+              - { label: "Level", name: "level", widget: "select", options: ["Beginner", "Intermediate", "All ages"] }
+              - { label: "Artwork", name: "art", widget: "select", options: ["kintsugi", "resin", "calligraphy", "diya"] }
+              - { label: "Description", name: "blurb", widget: "text" }
+              - { label: "Includes", name: "includes", widget: "string" }
+      - name: reviews
+        label: "Reviews"
+        file: "data/reviews.json"
+        fields:
+          - label: "Reviews"
+            name: "reviews"
+            widget: "list"
+            summary: "{{fields.name}}, {{fields.city}}"
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "City", name: "city", widget: "string" }
+              - { label: "Product ID", name: "product", widget: "string" }
+              - { label: "Rating", name: "rating", widget: "number", value_type: "int", min: 1, max: 5 }
+              - { label: "Review", name: "text", widget: "text" }
+              - { label: "Photo artwork", name: "photo", widget: "string" }
+      - name: site
+        label: "Site settings, banner & currency"
+        file: "data/site.json"
+        fields:
+          - { label: "WhatsApp number (country code, no +)", name: "whatsapp", widget: "string" }
+          - { label: "Instagram handle", name: "instagram", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "City", name: "city", widget: "string" }
+          - label: "Festive banner"
+            name: "banner"
+            widget: "object"
+            fields:
+              - { label: "Show banner", name: "active", widget: "boolean" }
+              - { label: "Theme", name: "theme", widget: "select", options: ["diwali", "eid", "valentine", "wedding"] }
+              - { label: "Message", name: "text", widget: "string" }
+              - { label: "Button text", name: "cta", widget: "string" }
+              - { label: "Link", name: "link", widget: "string" }
+          - label: "Currency rates (1 INR = …)"
+            name: "rates"
+            widget: "object"
+            fields:
+              - { label: "INR", name: "INR", widget: "number", value_type: "float", default: 1 }
+              - { label: "USD", name: "USD", widget: "number", value_type: "float" }
+              - { label: "AED", name: "AED", widget: "number", value_type: "float" }
+              - { label: "GBP", name: "GBP", widget: "number", value_type: "float" }
+          - { label: "First-order discount code", name: "firstOrderCode", widget: "string" }
+          - label: "Event QR offer"
+            name: "eventOffer"
+            widget: "object"
+            fields:
+              - { label: "Code", name: "code", widget: "string" }
+              - { label: "Percent off", name: "percent", widget: "number", value_type: "int" }
+              - { label: "Event name", name: "event", widget: "string" }
+              - { label: "Valid until", name: "until", widget: "datetime", date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD" }

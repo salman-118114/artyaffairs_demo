@@ -1,14 +1,51 @@
-# Arty Affairs — storefront
+# Arty Affairs
 
-Static HTML/CSS/JS, no build step. Content lives in `data/*.json` and is edited by the owner at `/admin` (Decap CMS).
+Storefront for Arty Affairs, a handmade art and gifting studio in Hyderabad.
+**Create. Curate. Celebrate.**
 
-- Run locally: `npm start` (or `python -m http.server 5173`), open http://localhost:5173
-- Edit products, workshops, prices, reviews, festive banner, currency rates, WhatsApp number: `/admin` → see `admin/config.yml` (Netlify Identity + Git Gateway).
-- Product photos: add them in the admin; until then each product shows generated on-brand artwork (`assets/js/art.js`).
-- Event QR: print a QR to `event.html?src=<event>`; offer text is in `data/site.json → eventOffer`.
+Next.js 16 (App Router, TypeScript), React 19, [Motion](https://motion.dev) for scroll and
+interaction animation. Pages are pre-rendered at build time from the JSON files in `data/`.
+
+## Run locally
+```bash
+npm install
+npm run dev              # http://localhost:3000
+```
+
+## Deploy on Dokploy
+1. Push this repo to GitHub/GitLab.
+2. Dokploy → **Create Service → Application** → connect the repo and branch.
+3. **Build type:** Dockerfile · **Dockerfile path:** `Dockerfile` · **Context:** `.`
+4. **Build arguments:** `NEXT_PUBLIC_SITE_URL=https://your-domain`
+5. **Environment:** `INQUIRY_WEBHOOK_URL=…` (optional, see below)
+6. **Domains:** add your domain, **container port 3000**, enable HTTPS.
+7. Deploy. Turn on auto-deploy so content edits from `/admin` publish on their own.
+
+## Structure
+| Path | What |
+|---|---|
+| `app/` | Routes: `/`, `/shop`, `/product/[id]`, `/hamper`, `/checkout`, `/wedding`, `/workshops`, `/commissions`, `/corporate`, `/gallery`, `/about`, `/reviews`, `/faq`, `/shipping`, `/event`, plus `sitemap.xml`, `robots.txt`, `api/inquiry` |
+| `app/tokens.css` | Design tokens: colour, type, spacing, motion |
+| `app/site.css`, `app/sections.css` | Components; section layouts and motion states |
+| `components/motion/` | Split-text headlines, marquee, hover-preview list, pinned horizontal rail, scrollytelling steps, stacked cards, scrubbed statement, testimonial slider, parallax, magnetic button, scroll-drawn seam |
+| `components/` | Header/drawers, footer, cards, artwork, forms, `StoreProvider` (bag, currency, toast) |
+| `lib/` | Data loading, types, price formatting, artwork engine (placeholder art until photos are uploaded) |
+| `data/` | Products, workshops, reviews, site settings (banner, WhatsApp number, currency rates, offers) |
+| `public/admin/` | Decap CMS so the owner can edit `data/` without code |
+
+## Motion & accessibility
+All animation respects **prefers-reduced-motion** (Motion's `reducedMotion="user"` plus CSS
+media queries). Hidden start states only apply once JavaScript is running, so content is never
+stuck invisible. Animations use transform, opacity and clip-path only.
+
+## Environment
+| Variable | When | Purpose |
+|---|---|---|
+| `NEXT_PUBLIC_SITE_URL` | build | Canonical links, sitemap, structured data |
+| `INQUIRY_WEBHOOK_URL` | runtime | Forward form submissions; without it they go to the server log |
 
 ## Before launch
-- Replace `whatsapp` in `data/site.json` (currently a placeholder 919000000000).
-- Payments: `assets/js/checkout.js → startPayment()` is simulated. Create orders server-side, then open Razorpay Checkout (UPI/cards/netbanking; enable International Payments for foreign cards).
-- Forms show a success state and a WhatsApp hand-off; connect them to Netlify Forms / Formspree.
-- Reviews, founder story and event history are sample copy — replace with real content.
+- Set the real WhatsApp number in `data/site.json`.
+- Payments are simulated (`app/checkout/CheckoutClient.tsx → startPayment`). Add a server route that creates a Razorpay order, then open Razorpay Checkout.
+- Replace sample reviews, founder story, event history and shipping rates.
+- `/admin` uses Netlify Identity by default; on Dokploy switch `public/admin/config.yml` to the `github` backend with an OAuth provider.

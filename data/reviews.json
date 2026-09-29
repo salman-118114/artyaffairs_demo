@@ -1,0 +1,12 @@
+{
+  "reviews": [
+    { "name": "Ayesha R.", "city": "Hyderabad", "product": "nikah-pen-floral", "rating": 5, "text": "The nikah pens were the talk of the ceremony. Our names in gold, the florals so fine you have to lean in. Everyone asked where we got them.", "photo": "pen" },
+    { "name": "Sana & Imran", "city": "Dubai", "product": "bismillah-gold-canvas", "rating": 5, "text": "Ordered from Dubai, arrived in nine days, wrapped like treasure. The gold catches the evening light in our living room.", "photo": "calligraphy" },
+    { "name": "Priya K.", "city": "Bengaluru", "product": "anniversary-keepsake", "rating": 5, "text": "I sent our wedding song and date, and the hamper came back with both lettered on a tiny canvas. My husband went quiet for a full minute.", "photo": "hamper" },
+    { "name": "Fatima Z.", "city": "London", "product": "name-canvas-dual", "rating": 5, "text": "My daughter's name in Arabic and English, exactly as I imagined. They sent a proof on WhatsApp before painting, which I loved.", "photo": "name" },
+    { "name": "Rahul M.", "city": "Hyderabad", "product": "kintsugi-basics", "rating": 5, "text": "The kintsugi workshop was the calmest three hours of my month. I came home with a gold-mended bowl I actually use.", "photo": "kintsugi" },
+    { "name": "Nida S.", "city": "Hyderabad", "product": "trousseau-hamper", "rating": 5, "text": "They built my sister's trousseau box from scratch, matched to her lehenga colour. Worth every rupee.", "photo": "hamper" },
+    { "name": "Meera T.", "city": "Hyderabad", "product": "emerald-tide-tray", "rating": 4, "text": "Stunning tray, heavier than I expected in a good way. Delivery took a day longer than promised, but they kept me updated.", "photo": "resin" },
+    { "name": "Omar H.", "city": "Abu Dhabi", "product": "corporate-desk-set", "rating": 5, "text": "Ordered 60 desk sets for our Ramadan client gifting. Every one matched our brand colours and arrived on schedule.", "photo": "diary" }
+  ]
+}
